@@ -1,0 +1,242 @@
+{
+  "html": {
+    "name": "HTML", "icon": "🌐", "tag": "Web", "color": "#e34c26",
+    "easy": [
+      {"id":1,"question":"What does HTML stand for?","options":["Hyper Text Markup Language","High Text Machine Language","Hyper Transfer Markup Language","High Transfer Machine Language"],"answer":0,"explanation":"HTML = Hyper Text Markup Language, the standard for web pages.","hint":"Think about what makes web pages 'hyper-linked'"},
+      {"id":2,"question":"Which tag creates a hyperlink?","options":["<link>","<href>","<a>","<url>"],"answer":2,"explanation":"The <a> (anchor) tag creates hyperlinks with the href attribute.","hint":"It's a single letter tag"},
+      {"id":3,"question":"Which tag is used for line break?","options":["<break>","<lb>","<br>","<newline>"],"answer":2,"explanation":"<br> is a self-closing tag that inserts a line break.","hint":"Short for 'break'"},
+      {"id":4,"question":"What tag creates a paragraph?","options":["<para>","<pg>","<p>","<par>"],"answer":2,"explanation":"<p> defines a paragraph in HTML.","hint":"It's just one letter"},
+      {"id":5,"question":"Which is the largest heading?","options":["<h6>","<head>","<heading>","<h1>"],"answer":3,"explanation":"<h1> is the largest heading. h6 is the smallest.","hint":"Numbers go from biggest to smallest"}
+    ],
+    "medium": [
+      {"id":6,"question":"Which tag defines an internal stylesheet?","options":["<css>","<script>","<style>","<link>"],"answer":2,"explanation":"The <style> tag inside <head> defines CSS rules.","hint":"The tag shares a name with the language it contains"},
+      {"id":7,"question":"Which attribute specifies alt text for an image?","options":["src","title","href","alt"],"answer":3,"explanation":"alt provides alternative text for accessibility.","hint":"Short for 'alternative'"},
+      {"id":8,"question":"What does the <iframe> tag do?","options":["Inserts an image","Embeds another document","Creates a form","Defines a table"],"answer":1,"explanation":"<iframe> embeds another HTML page inline.","hint":"'i' could stand for 'inline'"},
+      {"id":9,"question":"Which attribute opens a link in a new tab?","options":["target='_blank'","target='_new'","rel='noopener'","href='#new'"],"answer":0,"explanation":"target='_blank' opens the link in a new browser tab.","hint":"'blank' refers to a blank new window"},
+      {"id":10,"question":"How do you create an ordered list?","options":["<ul>","<ol>","<dl>","<list>"],"answer":1,"explanation":"<ol> = ordered list (numbered). <ul> = unordered (bullets).","hint":"'o' for ordered"}
+    ],
+    "hard": [
+      {"id":11,"question":"What is the purpose of the <meta charset='UTF-8'> tag?","options":["Sets page width","Defines character encoding","Adds SEO keywords","Links to fonts"],"answer":1,"explanation":"It specifies the character encoding so browsers display text correctly.","hint":"Encoding = how characters are stored"},
+      {"id":12,"question":"Which HTML5 element is used for navigation links?","options":["<menu>","<nav>","<links>","<navigation>"],"answer":1,"explanation":"<nav> is the semantic HTML5 element for navigation sections.","hint":"Semantic HTML5 elements describe their purpose"},
+      {"id":13,"question":"What does the 'defer' attribute do on a script tag?","options":["Blocks rendering","Runs script after HTML parsing","Makes script async","Disables the script"],"answer":1,"explanation":"defer tells the browser to run the script after HTML is parsed.","hint":"The script is 'deferred' until later"},
+      {"id":14,"question":"Which attribute makes an input field required?","options":["mandatory","necessary","required","must"],"answer":2,"explanation":"The 'required' boolean attribute prevents form submission if field is empty.","hint":"The English word for 'must fill in'"},
+      {"id":15,"question":"What is the correct HTML for a semantic article?","options":["<div class='article'>","<article>","<section type='article'>","<content>"],"answer":1,"explanation":"<article> is the semantic HTML5 element for self-contained content.","hint":"HTML5 added many semantic elements"}
+    ]
+  },
+  "css": {
+    "name": "CSS", "icon": "🎨", "tag": "Styling", "color": "#264de4",
+    "easy": [
+      {"id":1,"question":"CSS stands for?","options":["Computer Style Sheets","Cascading Style Sheets","Creative Style System","Cascading Simple Sheets"],"answer":1,"explanation":"CSS = Cascading Style Sheets.","hint":"The 'C' in 'cascading' refers to how styles flow down"},
+      {"id":2,"question":"Property for text color?","options":["font-color","text-color","color","foreground"],"answer":2,"explanation":"The 'color' property sets the text color.","hint":"The simplest, most obvious name"},
+      {"id":3,"question":"How do you center text?","options":["text-center: yes","text-align: center","font-align: center","align: center"],"answer":1,"explanation":"text-align: center centers inline content horizontally.","hint":"Think about alignment"},
+      {"id":4,"question":"Which property controls font size?","options":["text-size","font-size","size","text-scale"],"answer":1,"explanation":"font-size sets the size of the font.","hint":"Two words, both obvious"},
+      {"id":5,"question":"How do you make text bold?","options":["text-style: bold","font-weight: bold","text-weight: bold","font-style: bold"],"answer":1,"explanation":"font-weight: bold (or 700) makes text bold.","hint":"Weight determines how 'heavy' text looks"}
+    ],
+    "medium": [
+      {"id":6,"question":"Box model order inside-out?","options":["content-padding-border-margin","content-border-padding-margin","margin-border-padding-content","padding-content-border-margin"],"answer":0,"explanation":"content → padding → border → margin.","hint":"Remember CPBM: Content Padding Border Margin"},
+      {"id":7,"question":"Relative to root font size?","options":["em","px","rem","vw"],"answer":2,"explanation":"rem is relative to the root element's font size.","hint":"'r' stands for root"},
+      {"id":8,"question":"z-index controls?","options":["Zoom","Stacking order","Opacity","Width"],"answer":1,"explanation":"z-index controls stacking order of positioned elements.","hint":"Think of z as the third dimension (depth)"},
+      {"id":9,"question":"Which value creates a flex container?","options":["flex","block","inline-flex","Both flex and inline-flex"],"answer":3,"explanation":"Both 'flex' and 'inline-flex' create flex containers.","hint":"There are two valid values"},
+      {"id":10,"question":"Property for space inside border?","options":["margin","spacing","gap","padding"],"answer":3,"explanation":"padding adds space between content and border.","hint":"Padding = cushioning inside"}
+    ],
+    "hard": [
+      {"id":11,"question":"What does 'specificity' mean in CSS?","options":["Load order of stylesheets","Priority system for conflicting rules","Animation speed","Color accuracy"],"answer":1,"explanation":"Specificity determines which CSS rule wins when multiple rules apply.","hint":"More specific selectors win over general ones"},
+      {"id":12,"question":"Which CSS property enables GPU acceleration?","options":["hardware: gpu","transform: translateZ(0)","performance: accelerated","gpu: true"],"answer":1,"explanation":"transform: translateZ(0) tricks the browser into using GPU compositing.","hint":"It's a transform trick"},
+      {"id":13,"question":"What is the CSS 'will-change' property for?","options":["Conditional styling","Optimization hint for animations","Responsive breakpoints","Color transitions"],"answer":1,"explanation":"will-change hints to the browser about upcoming animations for optimization.","hint":"It tells the browser to 'prepare' for changes"},
+      {"id":14,"question":"CSS custom properties are also called?","options":["SASS variables","CSS variables","Preprocessor vars","Style tokens"],"answer":1,"explanation":"CSS custom properties (--varName) are commonly called CSS variables.","hint":"They start with two dashes"},
+      {"id":15,"question":"Which selector has highest specificity?","options":["element","class","ID","!important"],"answer":3,"explanation":"!important overrides all other specificity (though it's bad practice).","hint":"It's a brute-force override"}
+    ]
+  },
+  "javascript": {
+    "name": "JavaScript", "icon": "⚡", "tag": "Core", "color": "#f7df1e",
+    "easy": [
+      {"id":1,"question":"Block-scoped variable keyword?","options":["var","let","define","set"],"answer":1,"explanation":"let is block-scoped, unlike the function-scoped var.","hint":"'let' was introduced in ES6"},
+      {"id":2,"question":"How do you write a comment?","options":["<!-- -->","# comment","// comment","** comment"],"answer":2,"explanation":"// for single-line, /* */ for multi-line comments.","hint":"Double slash is universal in C-family languages"},
+      {"id":3,"question":"Which method adds to end of array?","options":[".shift()",".pop()",".push()",".unshift()"],"answer":2,"explanation":"push() appends elements to end. pop() removes from end.","hint":"Like pushing something onto a stack"},
+      {"id":4,"question":"What does typeof null return?","options":["null","undefined","object","string"],"answer":2,"explanation":"typeof null returns 'object' — a famous JS quirk from 1995.","hint":"It's a historic bug that was never fixed"},
+      {"id":5,"question":"How do you declare a constant?","options":["var","let","const","constant"],"answer":2,"explanation":"const declares a constant that cannot be reassigned.","hint":"Short for 'constant'"}
+    ],
+    "medium": [
+      {"id":6,"question":"=== checks?","options":["Value only","Type only","Value and type","Neither"],"answer":2,"explanation":"=== is strict equality — checks value AND type.","hint":"More '=' signs = stricter check"},
+      {"id":7,"question":"Promise.all() resolves when?","options":["First resolves","All resolve","One rejects","Called"],"answer":1,"explanation":"Promise.all() resolves only when ALL promises resolve.","hint":"'all' in the name is the hint"},
+      {"id":8,"question":"DOMContentLoaded fires when?","options":["After images load","After HTML is parsed","Before any loading","After CSS loads"],"answer":1,"explanation":"DOMContentLoaded fires after HTML is parsed, before images/CSS.","hint":"'Content' means the HTML content, not everything"},
+      {"id":9,"question":"What is the spread operator?","options":[">>","..","...","**"],"answer":2,"explanation":"... (three dots) expands an iterable into individual elements.","hint":"Three dots"},
+      {"id":10,"question":"Which returns elements passing a test?","options":["map()","reduce()","forEach()","filter()"],"answer":3,"explanation":"filter() creates a new array with elements passing the test.","hint":"It 'filters out' elements that don't pass"}
+    ],
+    "hard": [
+      {"id":11,"question":"What is closure?","options":["A way to close browser tabs","Function accessing outer scope variables","Memory cleanup mechanism","Error handling pattern"],"answer":1,"explanation":"Closure is when a function retains access to its outer scope even after execution.","hint":"Inner functions 'close over' outer variables"},
+      {"id":12,"question":"What is event delegation?","options":["Firing events manually","Attaching listener to parent for child events","Removing event listeners","Custom event creation"],"answer":1,"explanation":"Event delegation uses bubbling to handle events at a parent element.","hint":"Instead of many listeners, use one on the parent"},
+      {"id":13,"question":"What does the 'this' keyword refer to in arrow functions?","options":["The function itself","The parent class","Lexically enclosing context","The global object"],"answer":2,"explanation":"Arrow functions don't have their own 'this'; they inherit from the surrounding context.","hint":"Arrow functions are 'lexically bound'"},
+      {"id":14,"question":"What is the purpose of debouncing?","options":["Speed up function calls","Limit function calls during rapid events","Merge multiple functions","Cancel pending promises"],"answer":1,"explanation":"Debouncing delays execution until activity stops, preventing rapid repeated calls.","hint":"Think of typing in a search box"},
+      {"id":15,"question":"What does Object.freeze() do?","options":["Speeds up object access","Prevents object modification","Creates a deep copy","Converts to JSON"],"answer":1,"explanation":"Object.freeze() makes an object immutable — no properties can be added/changed/deleted.","hint":"'Freeze' = no more changes"}
+    ]
+  },
+  "python": {
+    "name": "Python", "icon": "🐍", "tag": "Backend", "color": "#3776ab",
+    "easy": [
+      {"id":1,"question":"How do you print in Python?","options":["console.log()","echo()","print()","write()"],"answer":2,"explanation":"print() is Python's built-in output function.","hint":"The most common function in beginner Python"},
+      {"id":2,"question":"Which is immutable?","options":["list","dict","set","tuple"],"answer":3,"explanation":"Tuples are immutable — elements cannot be changed after creation.","hint":"Lists use [], tuples use ()"},
+      {"id":3,"question":"5 // 2 equals?","options":["2.5","2","3","Error"],"answer":1,"explanation":"// is floor division — returns the integer quotient.","hint":"The double slash divides and floors"},
+      {"id":4,"question":"Built-in for length?","options":["size()","count()","length()","len()"],"answer":3,"explanation":"len() returns the number of items in an object.","hint":"Short for 'length'"},
+      {"id":5,"question":"How do you start a comment?","options":["//","/*","#","--"],"answer":2,"explanation":"# starts a single-line comment in Python.","hint":"It's the hash/pound symbol"}
+    ],
+    "medium": [
+      {"id":6,"question":"What does @property decorator do?","options":["Makes private","Method to getter","Marks static","Prevents override"],"answer":1,"explanation":"@property lets you access a method like an attribute.","hint":"It turns a method into a property accessor"},
+      {"id":7,"question":"*args in a function?","options":["Required arg","Keyword args","Variable positional args","Pointer"],"answer":2,"explanation":"*args collects extra positional arguments into a tuple.","hint":"The * unpacks the arguments"},
+      {"id":8,"question":"Exception handling keyword?","options":["catch","rescue","except","handle"],"answer":2,"explanation":"Python uses try/except for exception handling.","hint":"Python differs from Java/JS here"},
+      {"id":9,"question":"Open a file safely?","options":["open(file)","file.open()","with open(file) as f:","import open(file)"],"answer":2,"explanation":"'with' ensures the file is properly closed even if an exception occurs.","hint":"The context manager pattern"},
+      {"id":10,"question":"What is a list comprehension?","options":["Documents lists","Creates lists concisely","Sorting algorithm","Linked list"],"answer":1,"explanation":"[expr for item in iterable if condition] is a concise list creation.","hint":"[x*2 for x in range(10)] is an example"}
+    ],
+    "hard": [
+      {"id":11,"question":"What is GIL in Python?","options":["Graphics Interface Library","Global Interpreter Lock","General Index List","GPU Interface Layer"],"answer":1,"explanation":"GIL prevents multiple threads from executing Python bytecode simultaneously.","hint":"It limits true parallelism in CPython"},
+      {"id":12,"question":"What is a generator?","options":["Random number creator","Function that yields values lazily","Class constructor","Template engine"],"answer":1,"explanation":"Generators use 'yield' to produce values one at a time, saving memory.","hint":"They 'generate' values on demand"},
+      {"id":13,"question":"What does __slots__ do?","options":["Creates method slots","Restricts instance attributes","Enables multithreading","Defines abstract methods"],"answer":1,"explanation":"__slots__ prevents dynamic attribute creation, reducing memory per instance.","hint":"Slots = pre-defined fixed attributes"},
+      {"id":14,"question":"What is monkey patching?","options":["Fixing bugs in prod","Dynamically modifying classes at runtime","Testing with mocks","Error handling pattern"],"answer":1,"explanation":"Monkey patching modifies or extends code at runtime without changing source.","hint":"You're 'patching' something that wasn't meant to be changed"},
+      {"id":15,"question":"What is the difference between @staticmethod and @classmethod?","options":["No difference","classmethod receives cls, staticmethod receives nothing","staticmethod is faster","classmethod is private"],"answer":1,"explanation":"@classmethod gets class (cls) as first arg; @staticmethod gets no implicit argument.","hint":"Think about what the first argument is"}
+    ]
+  },
+  "dbms": {
+    "name": "DBMS", "icon": "🗄️", "tag": "Database", "color": "#336791",
+    "easy": [
+      {"id":1,"question":"What does SQL stand for?","options":["Structured Query Language","Simple Query Language","Sequential Query Logic","Standard Query Language"],"answer":0,"explanation":"SQL = Structured Query Language, the standard for relational databases.","hint":"It's 'structured' and used to 'query'"},
+      {"id":2,"question":"Which SQL command retrieves data?","options":["INSERT","UPDATE","SELECT","DELETE"],"answer":2,"explanation":"SELECT retrieves data from one or more tables.","hint":"You 'select' what you want"},
+      {"id":3,"question":"What is a primary key?","options":["The most important table","Unique identifier for each row","Password for database","First column always"],"answer":1,"explanation":"A primary key uniquely identifies each record in a table.","hint":"Every row must have a unique one"},
+      {"id":4,"question":"Which command adds new data?","options":["ADD","INSERT","CREATE","PUT"],"answer":1,"explanation":"INSERT INTO adds new rows to a table.","hint":"You 'insert' new records"},
+      {"id":5,"question":"What is a foreign key?","options":["Key from another country","Links to primary key in another table","Optional primary key","Encrypted key"],"answer":1,"explanation":"A foreign key references a primary key in another table to create relationships.","hint":"It's 'foreign' because it comes from another table"}
+    ],
+    "medium": [
+      {"id":6,"question":"What is a JOIN in SQL?","options":["Merges databases","Combines rows from tables based on related columns","Deletes duplicates","Sorts data"],"answer":1,"explanation":"JOIN combines rows from two or more tables based on a related column.","hint":"You 'join' tables together"},
+      {"id":7,"question":"What does ACID stand for?","options":["Atomicity Consistency Isolation Durability","Advanced Complex Integrated Database","Automated Consistent Index Design","None of these"],"answer":0,"explanation":"ACID = Atomicity, Consistency, Isolation, Durability — transaction properties.","hint":"These are transaction guarantees"},
+      {"id":8,"question":"What is normalization?","options":["Sorting data alphabetically","Organizing data to reduce redundancy","Encrypting the database","Increasing database size"],"answer":1,"explanation":"Normalization organizes tables to minimize data redundancy and dependency.","hint":"It makes data 'normal' and non-redundant"},
+      {"id":9,"question":"What is an index in a database?","options":["Table of contents in docs","Data structure for faster lookups","Primary key constraint","View of a table"],"answer":1,"explanation":"An index is a data structure that speeds up data retrieval operations.","hint":"Like a book index — helps you find things faster"},
+      {"id":10,"question":"What does GROUP BY do?","options":["Sorts results","Groups rows with same values","Creates subgroups of tables","Merges duplicate rows"],"answer":1,"explanation":"GROUP BY groups rows with the same values for aggregate functions.","hint":"Used with COUNT, SUM, AVG etc."}
+    ],
+    "hard": [
+      {"id":11,"question":"What is a deadlock?","options":["Crashed database","Two transactions waiting for each other","Full database","Slow query"],"answer":1,"explanation":"A deadlock occurs when two transactions each hold locks the other needs.","hint":"Both are waiting for the other to release a lock"},
+      {"id":12,"question":"What is the difference between DELETE and TRUNCATE?","options":["No difference","DELETE is logged row-by-row; TRUNCATE drops and recreates","TRUNCATE is slower","DELETE is for tables only"],"answer":1,"explanation":"DELETE logs each row removal; TRUNCATE is faster but cannot be rolled back easily.","hint":"TRUNCATE is a DDL operation, DELETE is DML"},
+      {"id":13,"question":"What is a B-Tree index?","options":["Binary tree","Balanced tree structure for sorted data access","Breadth-first tree","Bucket tree"],"answer":1,"explanation":"B-Tree (Balanced Tree) maintains sorted data and allows searches, insertions in O(log n).","hint":"B stands for Balanced"},
+      {"id":14,"question":"What is sharding in databases?","options":["Deleting old data","Splitting database across multiple servers","Encrypting database","Creating backups"],"answer":1,"explanation":"Sharding splits a large database into smaller pieces (shards) across servers.","hint":"Each shard holds a subset of the data"},
+      {"id":15,"question":"What is eventual consistency?","options":["Database is always consistent","Given no updates, data will eventually be the same everywhere","Consistency is never guaranteed","Consistency only at transaction end"],"answer":1,"explanation":"Eventual consistency means all replicas will converge given enough time without updates.","hint":"Used in distributed systems like Cassandra"}
+    ]
+  },
+  "gk": {
+    "name": "General Knowledge", "icon": "🌍", "tag": "GK", "color": "#2ecc71",
+    "easy": [
+      {"id":1,"question":"What is the capital of India?","options":["Mumbai","Delhi","Bangalore","Kolkata"],"answer":1,"explanation":"New Delhi is the capital of India and seat of the national government.","hint":"It's in the northern part of India"},
+      {"id":2,"question":"How many continents are there?","options":["5","6","7","8"],"answer":2,"explanation":"Earth has 7 continents: Africa, Antarctica, Asia, Australia, Europe, North America, South America.","hint":"More than 6, less than 8"},
+      {"id":3,"question":"Which is the largest ocean?","options":["Atlantic","Indian","Arctic","Pacific"],"answer":3,"explanation":"The Pacific Ocean is the largest, covering about 46% of the world's water surface.","hint":"It lies between Asia and the Americas"},
+      {"id":4,"question":"What is the chemical symbol for water?","options":["WA","H2O","HO","W2O"],"answer":1,"explanation":"Water is H2O — two hydrogen atoms bonded to one oxygen atom.","hint":"Hydrogen + Oxygen"},
+      {"id":5,"question":"How many days in a leap year?","options":["363","364","365","366"],"answer":3,"explanation":"A leap year has 366 days — February has 29 days instead of 28.","hint":"One more than a regular year"}
+    ],
+    "medium": [
+      {"id":6,"question":"Who invented the telephone?","options":["Thomas Edison","Nikola Tesla","Alexander Graham Bell","Guglielmo Marconi"],"answer":2,"explanation":"Alexander Graham Bell is credited with inventing the telephone in 1876.","hint":"His last name is also 'Bell'"},
+      {"id":7,"question":"What is the speed of light?","options":["3×10^6 m/s","3×10^8 m/s","3×10^10 m/s","3×10^4 m/s"],"answer":1,"explanation":"Speed of light ≈ 3×10^8 m/s (299,792,458 m/s exactly).","hint":"About 300,000 kilometers per second"},
+      {"id":8,"question":"Which planet is closest to the Sun?","options":["Venus","Earth","Mars","Mercury"],"answer":3,"explanation":"Mercury is the closest planet to the Sun in our solar system.","hint":"The smallest planet"},
+      {"id":9,"question":"What does DNA stand for?","options":["Deoxyribonucleic Acid","Dynamic Nucleic Arrangement","Digital Nucleotide Array","Deoxyribose Nucleotide Acid"],"answer":0,"explanation":"DNA = Deoxyribonucleic Acid, the molecule carrying genetic information.","hint":"It's in every cell of your body"},
+      {"id":10,"question":"Who painted the Mona Lisa?","options":["Michelangelo","Raphael","Leonardo da Vinci","Caravaggio"],"answer":2,"explanation":"Leonardo da Vinci painted the Mona Lisa between 1503–1519.","hint":"The same person who designed flying machines"}
+    ],
+    "hard": [
+      {"id":11,"question":"What is the Higgs boson also known as?","options":["Dark matter particle","God particle","Quantum particle","Gravity particle"],"answer":1,"explanation":"The Higgs boson is nicknamed the 'God particle' because it gives mass to other particles.","hint":"A famous nickname that physicists dislike"},
+      {"id":12,"question":"What is the smallest country in the world?","options":["Monaco","San Marino","Vatican City","Liechtenstein"],"answer":2,"explanation":"Vatican City at 0.44 km² is the world's smallest country by area.","hint":"It's inside Rome, Italy"},
+      {"id":13,"question":"What causes seasons on Earth?","options":["Distance from Sun","Axial tilt","Moon's gravity","Speed of rotation"],"answer":1,"explanation":"Earth's 23.5° axial tilt causes seasons as Earth orbits the Sun.","hint":"The Earth is 'tilted' at an angle"},
+      {"id":14,"question":"What is photosynthesis?","options":["Light breaking down atoms","Plants converting light to food","Animal metabolism","Cellular respiration"],"answer":1,"explanation":"Photosynthesis converts sunlight, CO2, and water into glucose and oxygen.","hint":"'Photo' means light, 'synthesis' means making"},
+      {"id":15,"question":"Who formulated the theory of general relativity?","options":["Isaac Newton","Niels Bohr","Stephen Hawking","Albert Einstein"],"answer":3,"explanation":"Einstein's general relativity (1915) describes gravity as spacetime curvature.","hint":"E=mc² is his most famous equation"}
+    ]
+  },
+  "aiml": {
+    "name": "AI / ML", "icon": "🤖", "tag": "AI", "color": "#9b59b6",
+    "easy": [
+      {"id":1,"question":"What does AI stand for?","options":["Automated Intelligence","Artificial Intelligence","Advanced Integration","Automated Interface"],"answer":1,"explanation":"AI = Artificial Intelligence — machines simulating human intelligence.","hint":"The 'A' is for artificial"},
+      {"id":2,"question":"What is machine learning?","options":["Programming machines manually","Machines learning from data without explicit programming","Building robot bodies","Using calculators"],"answer":1,"explanation":"ML enables computers to learn and improve from experience without being explicitly programmed.","hint":"Machines 'learn' from examples"},
+      {"id":3,"question":"What is a neural network?","options":["Computer hardware network","Brain-inspired ML model with layers of nodes","Internet of computers","Database system"],"answer":1,"explanation":"Neural networks are computing systems loosely modeled after the human brain.","hint":"Inspired by biological neurons"},
+      {"id":4,"question":"What is training data?","options":["Workout schedule for programmers","Data used to teach an ML model","Testing data","Random data"],"answer":1,"explanation":"Training data is the dataset used to teach a machine learning model.","hint":"The data the model 'trains' on"},
+      {"id":5,"question":"What is overfitting?","options":["Training too fast","Model performs well on training but poorly on new data","Too much data","Model with too many layers"],"answer":1,"explanation":"Overfitting occurs when a model learns training data too well including noise.","hint":"The model 'fits' the training data too perfectly"}
+    ],
+    "medium": [
+      {"id":6,"question":"What does CNN stand for in deep learning?","options":["Convolutional Neural Network","Connected Node Network","Classified Neural Network","Computed Node Neuron"],"answer":0,"explanation":"CNN = Convolutional Neural Network, mainly used for image recognition.","hint":"Used primarily for processing images"},
+      {"id":7,"question":"What is the purpose of a loss function?","options":["Reduce model size","Measure model's prediction error","Speed up training","Remove neurons"],"answer":1,"explanation":"Loss function measures the difference between predictions and actual values.","hint":"It quantifies how 'wrong' the model is"},
+      {"id":8,"question":"What is supervised learning?","options":["Teacher-supervised coding","Learning from labeled data","Unsupervised learning variant","Reinforcement learning"],"answer":1,"explanation":"Supervised learning trains models on labeled input-output pairs.","hint":"The data has correct 'labels' to learn from"},
+      {"id":9,"question":"What is backpropagation?","options":["Going backwards in data","Algorithm to train NNs by propagating error backwards","Data preprocessing","Neural network type"],"answer":1,"explanation":"Backpropagation computes gradients of the loss to update network weights.","hint":"Error propagates 'backwards' through the network"},
+      {"id":10,"question":"What is a transformer in ML?","options":["Electrical device","Attention-based neural network architecture","Data transformation tool","Random forest variant"],"answer":1,"explanation":"Transformers use self-attention mechanisms, powering models like GPT and BERT.","hint":"GPT and BERT are transformer-based models"}
+    ],
+    "hard": [
+      {"id":11,"question":"What is the vanishing gradient problem?","options":["Gradients disappear from memory","Gradients become tiny during backprop in deep networks","Loss function errors","Overfitting problem"],"answer":1,"explanation":"Gradients shrink exponentially as they propagate back through deep networks, stalling learning.","hint":"The gradient 'vanishes' as it goes backward"},
+      {"id":12,"question":"What is dropout regularization?","options":["Removing bad training data","Randomly disabling neurons during training","Reducing learning rate","Early stopping technique"],"answer":1,"explanation":"Dropout randomly sets neurons to zero during training to prevent overfitting.","hint":"Some neurons 'drop out' temporarily"},
+      {"id":13,"question":"What is the attention mechanism in transformers?","options":["Prioritizing fast computations","Weighting importance of different input positions","Memory management","Data augmentation"],"answer":1,"explanation":"Attention allows the model to focus on relevant parts of input when making predictions.","hint":"The model 'attends' to important parts"},
+      {"id":14,"question":"What is transfer learning?","options":["Transferring data between models","Using a pre-trained model for a new task","Moving models between servers","Data migration"],"answer":1,"explanation":"Transfer learning reuses knowledge from a pre-trained model for a new related task.","hint":"Knowledge is 'transferred' from one domain to another"},
+      {"id":15,"question":"What is the purpose of batch normalization?","options":["Group training data","Normalize layer activations for stable, faster training","Reduce batch size","Normalize input data"],"answer":1,"explanation":"Batch norm normalizes layer inputs, reducing internal covariate shift and accelerating training.","hint":"Normalizes outputs of layers within batches"}
+    ]
+  },
+  "aptitude": {
+    "name": "Aptitude", "icon": "🧮", "tag": "Math", "color": "#e74c3c",
+    "easy": [
+      {"id":1,"question":"What is 15% of 200?","options":["25","30","35","40"],"answer":1,"explanation":"15% of 200 = (15/100) × 200 = 30.","hint":"10% would be 20, 5% would be 10"},
+      {"id":2,"question":"If a train travels at 60 km/h, how far in 2.5 hours?","options":["120 km","140 km","150 km","160 km"],"answer":2,"explanation":"Distance = Speed × Time = 60 × 2.5 = 150 km.","hint":"Multiply speed by time"},
+      {"id":3,"question":"What is the next prime number after 7?","options":["8","9","10","11"],"answer":3,"explanation":"11 is the next prime after 7. 8, 9, 10 are all composite.","hint":"A prime is only divisible by 1 and itself"},
+      {"id":4,"question":"Simplify: 2/3 + 1/6","options":["1/2","3/4","5/6","7/8"],"answer":2,"explanation":"2/3 = 4/6, so 4/6 + 1/6 = 5/6.","hint":"Find a common denominator"},
+      {"id":5,"question":"What is the square root of 144?","options":["11","12","13","14"],"answer":1,"explanation":"√144 = 12 because 12 × 12 = 144.","hint":"What times itself gives 144?"}
+    ],
+    "medium": [
+      {"id":6,"question":"A can do a job in 10 days, B in 15 days. Together?","options":["5 days","6 days","7 days","8 days"],"answer":1,"explanation":"A's rate: 1/10, B's rate: 1/15. Together: 1/10+1/15 = 3/30+2/30 = 5/30 = 1/6, so 6 days.","hint":"Add their work rates"},
+      {"id":7,"question":"What is simple interest on Rs.1000 at 10% for 2 years?","options":["Rs.100","Rs.150","Rs.200","Rs.250"],"answer":2,"explanation":"SI = (P×R×T)/100 = (1000×10×2)/100 = Rs.200.","hint":"Use SI = PRT/100"},
+      {"id":8,"question":"If 5 apples cost Rs.30, what do 8 cost?","options":["Rs.40","Rs.44","Rs.48","Rs.52"],"answer":2,"explanation":"Price per apple = 30/5 = Rs.6. 8 apples = 8×6 = Rs.48.","hint":"Find unit price first"},
+      {"id":9,"question":"Average of 10, 20, 30, 40, 50?","options":["25","30","35","40"],"answer":1,"explanation":"Average = (10+20+30+40+50)/5 = 150/5 = 30.","hint":"Sum divided by count"},
+      {"id":10,"question":"How many ways to arrange 4 books in a row?","options":["12","16","24","32"],"answer":2,"explanation":"4! = 4×3×2×1 = 24 arrangements (permutations).","hint":"Use factorial: n!"}
+    ],
+    "hard": [
+      {"id":11,"question":"A sum doubles in 5 years at CI. When does it become 8x?","options":["10 years","15 years","20 years","25 years"],"answer":1,"explanation":"If doubles in 5 yr: 2x at 5yr, 4x at 10yr, 8x at 15yr.","hint":"Each 5 years, the amount doubles"},
+      {"id":12,"question":"In how many ways can 5 people be seated in a circle?","options":["120","24","60","48"],"answer":1,"explanation":"Circular arrangements = (n-1)! = (5-1)! = 4! = 24.","hint":"For circular arrangement, fix one person"},
+      {"id":13,"question":"Train 100m long passes a pole in 10s. Speed in km/h?","options":["36 km/h","40 km/h","45 km/h","50 km/h"],"answer":0,"explanation":"Speed = 100/10 = 10 m/s = 10 × 3.6 = 36 km/h.","hint":"Convert m/s to km/h: multiply by 3.6"},
+      {"id":14,"question":"Probability of 2 heads in 3 coin flips?","options":["1/4","3/8","1/2","5/8"],"answer":1,"explanation":"P(exactly 2H) = C(3,2)×(0.5)^3 = 3×(1/8) = 3/8.","hint":"Use combinations: C(3,2)"},
+      {"id":15,"question":"If log(2)=0.301, log(32)=?","options":["1.204","1.505","1.606","1.903"],"answer":1,"explanation":"log(32) = log(2^5) = 5×log(2) = 5×0.301 = 1.505.","hint":"32 = 2^5, use log power rule"}
+    ]
+  },
+  "os": {
+    "name": "Operating System", "icon": "💻", "tag": "System", "color": "#1abc9c",
+    "easy": [
+      {"id":1,"question":"What is an operating system?","options":["Web browser","Software managing hardware and programs","Programming language","Database system"],"answer":1,"explanation":"OS manages hardware resources and provides services for application programs.","hint":"It's the foundation software that runs everything"},
+      {"id":2,"question":"What is a process?","options":["CPU circuit","Running instance of a program","Memory chip","Hard drive sector"],"answer":1,"explanation":"A process is a program in execution, with its own memory space.","hint":"When a program runs, it becomes a process"},
+      {"id":3,"question":"What is RAM?","options":["Read-only memory","Random Access Memory","Remote Access Module","Runtime Application Memory"],"answer":1,"explanation":"RAM is volatile memory used for temporarily storing running programs and data.","hint":"Random Access Memory — it can be accessed in any order"},
+      {"id":4,"question":"What is a file system?","options":["Collection of files","Method of organizing files on storage","Operating system type","Network file sharing"],"answer":1,"explanation":"A file system organizes and stores files on storage devices.","hint":"It defines how files are named, stored, and organized"},
+      {"id":5,"question":"What is multitasking?","options":["Using multiple monitors","Running multiple programs simultaneously","Executing tasks one by one","Parallel processing only"],"answer":1,"explanation":"Multitasking allows multiple processes to run concurrently (or appear to).","hint":"You do it right now — multiple apps open"}
+    ],
+    "medium": [
+      {"id":6,"question":"What is a deadlock?","options":["System crash","Two processes waiting for each other indefinitely","Memory overflow","CPU overload"],"answer":1,"explanation":"Deadlock: two or more processes wait indefinitely for resources held by each other.","hint":"Each is waiting for the other to release"},
+      {"id":7,"question":"What is virtual memory?","options":["Cloud storage","Using disk space as additional RAM","RAM for virtual machines","Encrypted memory"],"answer":1,"explanation":"Virtual memory extends RAM using disk space, allowing larger programs to run.","hint":"Disk space acting as 'extra' RAM"},
+      {"id":8,"question":"What does FCFS scheduling stand for?","options":["Fast CPU First Serve","First Come First Serve","First CPU Fast Schedule","Fixed CPU First Serve"],"answer":1,"explanation":"FCFS = First Come First Served — processes execute in arrival order.","hint":"Like waiting in a queue"},
+      {"id":9,"question":"What is a semaphore?","options":["Signal flag","Synchronization primitive for managing concurrent access","Memory partition","File permission"],"answer":1,"explanation":"Semaphores are counters used to control access to shared resources.","hint":"Named after railway signals"},
+      {"id":10,"question":"What is thrashing in OS?","options":["Disk cleanup","Excessive paging causing low CPU utilization","CPU overclocking","Memory corruption"],"answer":1,"explanation":"Thrashing occurs when the OS spends more time swapping pages than executing processes.","hint":"The system spends all time paging, not working"}
+    ],
+    "hard": [
+      {"id":11,"question":"What is the dining philosophers problem?","options":["Computer science quiz","Classic synchronization problem about deadlock and starvation","Philosophy in CS","CPU scheduling algorithm"],"answer":1,"explanation":"Five philosophers alternately think and eat, illustrating deadlock and starvation problems.","hint":"Philosophers need two chopsticks to eat"},
+      {"id":12,"question":"What is copy-on-write?","options":["File copying method","Shared memory becomes private only when modified","Writing backup copies","Copying data before reading"],"answer":1,"explanation":"COW defers actual copying until a process modifies the shared data.","hint":"The copy only happens when someone writes"},
+      {"id":13,"question":"What is the purpose of the TLB?","options":["Thread load balancing","Translation Lookaside Buffer — cache for page table entries","Task list buffer","Thread lock block"],"answer":1,"explanation":"TLB caches virtual-to-physical address translations for faster memory access.","hint":"It speeds up address translation"},
+      {"id":14,"question":"What is preemptive scheduling?","options":["Always giving CPU to longest job","OS can interrupt and reassign CPU","First come first served","Round robin only"],"answer":1,"explanation":"Preemptive scheduling allows OS to take CPU from a running process and give to another.","hint":"The OS can 'pre-empt' or interrupt a running process"},
+      {"id":15,"question":"What is a kernel in an OS?","options":["CPU core","Core program managing system resources","Storage manager","GUI layer"],"answer":1,"explanation":"The kernel is the core OS component that manages hardware, memory, and processes.","hint":"The 'core' of the operating system"}
+    ]
+  },
+  "networks": {
+    "name": "Networks", "icon": "🌐", "tag": "Network", "color": "#3498db",
+    "easy": [
+      {"id":1,"question":"What does IP stand for?","options":["Internet Protocol","Internal Protocol","Interface Program","Internet Program"],"answer":0,"explanation":"IP = Internet Protocol — the fundamental protocol for routing packets.","hint":"It's the basis of internet communication"},
+      {"id":2,"question":"What is a router?","options":["Network cable","Device directing internet traffic between networks","Internet provider","Wireless signal device"],"answer":1,"explanation":"Routers direct packets between networks based on routing tables.","hint":"It 'routes' data to the right destination"},
+      {"id":3,"question":"What does HTTP stand for?","options":["HyperText Transfer Protocol","High Transfer Text Protocol","Hyper Text Transport Program","High Text Transfer Program"],"answer":0,"explanation":"HTTP = HyperText Transfer Protocol — the foundation of web communication.","hint":"The 'S' in HTTPS makes it secure"},
+      {"id":4,"question":"What is a MAC address?","options":["Apple computer address","Unique hardware network interface identifier","WiFi password","IP address type"],"answer":1,"explanation":"MAC (Media Access Control) address is a unique identifier assigned to network interfaces.","hint":"It's burned into the hardware"},
+      {"id":5,"question":"What port does HTTP use?","options":["21","22","80","443"],"answer":2,"explanation":"HTTP uses port 80 by default. HTTPS uses port 443.","hint":"A two-digit round number"}
+    ],
+    "medium": [
+      {"id":6,"question":"What is DNS?","options":["Data Network System","Domain Name System — translates names to IPs","Dynamic Network Server","Digital Name Service"],"answer":1,"explanation":"DNS translates domain names (google.com) into IP addresses.","hint":"The 'phonebook' of the internet"},
+      {"id":7,"question":"What is the OSI model?","options":["Operating System Interface","7-layer framework for network communication","Open Source Initiative","Optical Signal Interface"],"answer":1,"explanation":"OSI = Open Systems Interconnection — 7-layer conceptual networking model.","hint":"7 layers: Physical to Application"},
+      {"id":8,"question":"What is TCP vs UDP?","options":["TCP is faster, UDP is reliable","TCP is reliable with error-checking; UDP is faster without guarantees","They're identical","UDP is only for video"],"answer":1,"explanation":"TCP ensures delivery with acknowledgments; UDP sends without checking delivery.","hint":"TCP = reliable, UDP = fast"},
+      {"id":9,"question":"What is a subnet mask?","options":["Network security tool","Divides IP address into network and host parts","Wireless signal filter","Firewall type"],"answer":1,"explanation":"Subnet mask identifies which portion of an IP address is the network vs host.","hint":"255.255.255.0 is a common one"},
+      {"id":10,"question":"What is DHCP?","options":["Dynamic Host Configuration Protocol — auto-assigns IPs","Data Host Control Program","Dynamic HTTP Configuration","Direct Host Connection Protocol"],"answer":0,"explanation":"DHCP automatically assigns IP addresses to devices on a network.","hint":"It automatically gives devices their IP address"}
+    ],
+    "hard": [
+      {"id":11,"question":"What is ARP?","options":["Advanced Routing Protocol","Address Resolution Protocol — maps IP to MAC","Application Request Protocol","Automatic Router Program"],"answer":1,"explanation":"ARP resolves IP addresses to physical MAC addresses on local networks.","hint":"It translates between IP and hardware addresses"},
+      {"id":12,"question":"What is BGP used for?","options":["Blocking gateways","Border Gateway Protocol — inter-AS routing on the internet","Broadcast Group Protocol","Base Gateway Process"],"answer":1,"explanation":"BGP is the routing protocol that manages how packets are routed across the internet.","hint":"It's the routing protocol of the internet"},
+      {"id":13,"question":"What is a three-way handshake?","options":["3 cables connection","TCP connection: SYN, SYN-ACK, ACK","3-step encryption","Triple redundancy"],"answer":1,"explanation":"TCP's 3-way handshake: client SYN → server SYN-ACK → client ACK.","hint":"SYN, SYN-ACK, ACK"},
+      {"id":14,"question":"What is VLAN?","options":["Very Large Area Network","Virtual LAN — logical segmentation of network","Video LAN","Verified Local Area Network"],"answer":1,"explanation":"VLAN segments a physical network into multiple logical networks.","hint":"'Virtual' LAN — logical not physical separation"},
+      {"id":15,"question":"What is NAT?","options":["Network Address Translation — maps private to public IPs","Network Access Token","Node Address Table","Network Authentication Token"],"answer":0,"explanation":"NAT allows multiple devices to share a single public IP address.","hint":"Used by home routers to share one ISP IP address"}
+    ]
+  }
+}

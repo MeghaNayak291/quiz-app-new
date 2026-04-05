@@ -1,0 +1,38 @@
+[
+  {
+    "id": "e8c02cf6-f50b-40c9-97d6-b5f797ac0602",
+    "nickname": "megha",
+    "category": "daily",
+    "difficulty": "easy",
+    "score": 5,
+    "total": 10,
+    "percentage": 50,
+    "mode": "daily",
+    "time_taken": 49,
+    "date": "2026-03-31T20:59:30.180159"
+  },
+  {
+    "id": "12fa6b64-aaef-4baf-a0c1-6fc4c23b5f09",
+    "nickname": "megha",
+    "category": "css",
+    "difficulty": "medium",
+    "score": 1,
+    "total": 5,
+    "percentage": 20,
+    "mode": "challenge",
+    "time_taken": 17,
+    "date": "2026-03-31T21:04:32.495327"
+  },
+  {
+    "id": "1e401edf-e31b-4056-9eb6-cb387102ed06",
+    "nickname": "megha",
+    "category": "daily",
+    "difficulty": "easy",
+    "score": 9,
+    "total": 10,
+    "percentage": 90,
+    "mode": "daily",
+    "time_taken": 26,
+    "date": "2026-03-31T21:05:14.916380"
+  }
+]
