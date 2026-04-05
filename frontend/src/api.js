@@ -18,12 +18,12 @@ export const api = {
   getCategories: () => req('/api/categories'),
 
   // Quiz
-  getQuiz: (category, difficulty = 'medium', count = 10) =>
-    req(`/api/quiz/${category}?difficulty=${difficulty}&count=${count}`),
-  checkAnswer: (category, difficulty, questionId, selectedIndex) =>
+  getQuiz: (category, difficulty = 'medium', count = 10, lang = 'en') =>
+    req(`/api/quiz/${category}?difficulty=${difficulty}&count=${count}&lang=${lang}`),
+  checkAnswer: (category, difficulty, questionId, selectedIndex, lang = 'en') =>
     req('/api/quiz/check-answer', {
       method: 'POST',
-      body: { category, difficulty, question_id: questionId, selected_index: selectedIndex }
+      body: { category, difficulty, question_id: questionId, selected_index: selectedIndex, lang }
     }),
 
   // Scores
@@ -45,11 +45,11 @@ export const api = {
   getRoomLeaderboard: (code) => req(`/api/rooms/${code}/leaderboard`),
 
   // Daily Challenge
-  getDailyChallenge: () => req('/api/daily-challenge'),
-  checkDailyAnswer: (category, difficulty, questionId, selectedIndex) =>
+  getDailyChallenge: (lang = 'en') => req(`/api/daily-challenge?lang=${lang}`),
+  checkDailyAnswer: (category, difficulty, questionId, selectedIndex, lang = 'en') =>
     req('/api/daily-challenge/check-answer', {
       method: 'POST',
-      body: { category, difficulty, question_id: questionId, selected_index: selectedIndex }
+      body: { category, difficulty, question_id: questionId, selected_index: selectedIndex, lang }
     }),
 
   // AI

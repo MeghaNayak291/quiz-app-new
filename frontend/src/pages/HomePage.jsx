@@ -75,6 +75,7 @@ export default function HomePage({ user, onStartQuiz, onNav }) {
             <span>{user?.nickname}</span>
           </div>
           <button className="nav-btn" onClick={() => onNav('leaderboard')} title="Leaderboard">🏆</button>
+          <button className="nav-btn logout" onClick={() => onNav('login')} title="Sign Out">🚪 Logout</button>
         </div>
       </header>
 

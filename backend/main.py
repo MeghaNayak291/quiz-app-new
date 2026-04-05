@@ -38,6 +38,7 @@ class AnswerSubmit(BaseModel):
     selected_index: int
     category: str
     difficulty: str = "medium"
+    lang: str = "en"
 
 class ScoreSubmit(BaseModel):
     nickname: str
@@ -116,9 +117,39 @@ def get_categories():
             })
     return {"categories": cats}
 
+# ── Translation Support ─────────────────────────────────────────────────────────
+try:
+    from deep_translator import GoogleTranslator
+except ImportError:
+    GoogleTranslator = None
+
+TRANSLATIONS_FILE = os.path.join(DATA_DIR, "translations_cache.json")
+
+def get_translator(target_lang):
+    if not GoogleTranslator: return None
+    # deep-translator uses 'kn' for kannada, 'hi' for hindi, 'en' for english
+    return GoogleTranslator(source='auto', target=target_lang)
+
+def translate_text(text, lang, cache):
+    if lang == 'en' or not lang: return text
+    if not text: return ""
+    
+    cache_key = f"{lang}:{text}"
+    if cache_key in cache:
+        return cache[cache_key]
+    
+    if not GoogleTranslator: return text
+    
+    try:
+        translated = GoogleTranslator(source='auto', target=lang).translate(text)
+        cache[cache_key] = translated
+        return translated
+    except:
+        return text
+
 # ── Quiz ────────────────────────────────────────────────────────────────────────
 @app.get("/api/quiz/{category}")
-def get_quiz(category: str, difficulty: str = "medium", count: int = 10, shuffle: bool = True):
+def get_quiz(category: str, difficulty: str = "medium", count: int = 10, shuffle: bool = True, lang: str = "en"):
     qs = get_questions()
     if category not in qs:
         raise HTTPException(404, f"Category '{category}' not found")
@@ -137,18 +168,36 @@ def get_quiz(category: str, difficulty: str = "medium", count: int = 10, shuffle
         random.shuffle(selected)
     selected = selected[:min(count, len(selected))]
     
-    # Remove answers for client
+    # Translation logic
+    translation_cache = load_json(TRANSLATIONS_FILE, {})
+    cache_updated = False
+
     sanitized = []
     for q in selected:
         sq = {k: v for k, v in q.items() if k != "answer"}
+        
+        if lang and lang != 'en':
+            # Translate question
+            sq["question"] = translate_text(q["question"], lang, translation_cache)
+            # Translate options
+            sq["options"] = [translate_text(opt, lang, translation_cache) for opt in q["options"]]
+            # Translate hint
+            if "hint" in q:
+                sq["hint"] = translate_text(q["hint"], lang, translation_cache)
+            cache_updated = True
+            
         sanitized.append(sq)
+    
+    if cache_updated:
+        save_json(TRANSLATIONS_FILE, translation_cache)
     
     return {
         "category": category,
         "category_name": CATEGORIES_META.get(category, {}).get("name", category),
         "difficulty": difficulty,
         "total": len(sanitized),
-        "questions": sanitized
+        "questions": sanitized,
+        "lang": lang
     }
 
 @app.post("/api/quiz/check-answer")
@@ -169,11 +218,22 @@ def check_answer(body: AnswerSubmit):
         raise HTTPException(404, "Question not found")
     
     correct = body.selected_index == q["answer"]
+    
+    # Translate feedback
+    explanation = q.get("explanation", "")
+    hint = q.get("hint", "")
+    
+    if body.lang and body.lang != 'en':
+        translation_cache = load_json(TRANSLATIONS_FILE, {})
+        explanation = translate_text(explanation, body.lang, translation_cache)
+        hint = translate_text(hint, body.lang, translation_cache)
+        save_json(TRANSLATIONS_FILE, translation_cache)
+
     return {
         "correct": correct,
         "correct_index": q["answer"],
-        "explanation": q.get("explanation", ""),
-        "hint": q.get("hint", "")
+        "explanation": explanation,
+        "hint": hint
     }
 
 # ── Scores & Leaderboard ────────────────────────────────────────────────────────
@@ -403,7 +463,7 @@ def delete_room(code: str):
 
 # ── Daily Challenge ─────────────────────────────────────────────────────────────
 @app.get("/api/daily-challenge")
-def get_daily_challenge():
+def get_daily_challenge(lang: str = "en"):
     today = datetime.date.today().isoformat()
     qs = get_questions()
     
@@ -418,13 +478,31 @@ def get_daily_challenge():
     
     random.shuffle(all_qs)
     selected = all_qs[:10]
-    sanitized = [{k: v for k, v in q.items() if k != "answer"} for q in selected]
+    
+    # Translation logic
+    translation_cache = load_json(TRANSLATIONS_FILE, {})
+    cache_updated = False
+    
+    sanitized = []
+    for q in selected:
+        sq = {k: v for k, v in q.items() if k != "answer"}
+        if lang and lang != 'en':
+            sq["question"] = translate_text(q["question"], lang, translation_cache)
+            sq["options"] = [translate_text(opt, lang, translation_cache) for opt in q["options"]]
+            if "hint" in q:
+                sq["hint"] = translate_text(q["hint"], lang, translation_cache)
+            cache_updated = True
+        sanitized.append(sq)
+        
+    if cache_updated:
+        save_json(TRANSLATIONS_FILE, translation_cache)
     
     random.seed()  # reset seed
     return {
         "date": today,
         "questions": sanitized,
-        "total": len(sanitized)
+        "total": len(sanitized),
+        "lang": lang
     }
 
 @app.post("/api/daily-challenge/check-answer")

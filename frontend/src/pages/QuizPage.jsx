@@ -45,11 +45,11 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
     try {
       let data;
       if (config.mode === 'daily') {
-        data = await api.getDailyChallenge();
+        data = await api.getDailyChallenge(config.lang || 'en');
         data.category = 'mixed';
         data.category_name = 'Daily Challenge';
       } else {
-        data = await api.getQuiz(config.category, config.difficulty, config.count || 10);
+        data = await api.getQuiz(config.category, config.difficulty, config.count || 10, config.lang || 'en');
       }
       setQuiz(data);
       setLoading(false);
@@ -98,8 +98,8 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
       selectedIdx: -1,
       options: q.options,
     }]);
-    api.checkAnswer(q.category || config.category, config.difficulty, q.id, -1)
-      .then(res => setFeedback(res)).catch(() => {});
+    api.checkAnswer(q.category || config.category, config.difficulty, q.id, -1, config.lang || 'en')
+      .then(res => setFeedback(res)).catch(() => { });
   };
 
   const handleAnswer = async (idx) => {
@@ -114,7 +114,8 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
         q.category || config.category,
         config.difficulty,
         q.id,
-        idx
+        idx,
+        config.lang || 'en'
       );
       setFeedback(result);
       setAnswers(prev => [...prev, {
@@ -217,8 +218,8 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
       options: q.options,
     }]);
     setLifelines(l => ({ ...l, skip: false }));
-    api.checkAnswer(q.category || config.category, config.difficulty, q.id, -1)
-      .then(setFeedback).catch(() => {});
+    api.checkAnswer(q.category || config.category, config.difficulty, q.id, -1, config.lang || 'en')
+      .then(setFeedback).catch(() => { });
   };
 
   if (loading) return (
@@ -233,7 +234,7 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
   if (error) return (
     <div className="quiz-error">
       <div className="error-card">
-        <div style={{fontSize:'3rem'}}>⚠️</div>
+        <div style={{ fontSize: '3rem' }}>⚠️</div>
         <h2>Failed to load quiz</h2>
         <p>{error}</p>
         <button className="quiz-btn-primary" onClick={loadQuiz}>Retry</button>
@@ -292,7 +293,7 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
           <span className="stat-lbl">{t.wrong}</span>
         </div>
         <div className="stat-chip blue">
-          <span className="stat-val">{currentQ + 1}<span style={{fontSize:'0.7em',color:'var(--muted)'}}> /{total}</span></span>
+          <span className="stat-val">{currentQ + 1}<span style={{ fontSize: '0.7em', color: 'var(--muted)' }}> /{total}</span></span>
           <span className="stat-lbl">{t.question}</span>
         </div>
 
@@ -324,8 +325,8 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
             <div className="lifelines">
               {[
                 { id: '50:50', icon: '⚖️', label: '50:50', action: use5050 },
-                { id: 'hint',  icon: '💡', label: 'Hint',  action: useHint },
-                { id: 'skip',  icon: '⏭️', label: 'Skip',  action: useSkip },
+                { id: 'hint', icon: '💡', label: 'Hint', action: useHint },
+                { id: 'skip', icon: '⏭️', label: 'Skip', action: useSkip },
               ].map(ll => (
                 <button
                   key={ll.id}
@@ -353,8 +354,8 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
         <div className="options-list">
           {q?.options.map((opt, i) => {
             let cls = '';
-            if (answered) {
-              if (i === feedback?.correct_index) cls = 'correct';
+            if (answered && feedback) {
+              if (i === feedback.correct_index) cls = 'correct';
               else if (i === selectedIdx) cls = 'wrong';
             }
             const isElim = eliminated.includes(i);
