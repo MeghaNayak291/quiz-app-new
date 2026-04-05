@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const BASE = import.meta.env.VITE_API_URL || 'https://quiz-app-new-2.onrender.com';
 
 async function req(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
