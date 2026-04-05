@@ -5,6 +5,7 @@ import QuizPage from './pages/QuizPage.jsx';
 import ResultsPage from './pages/ResultsPage.jsx';
 import LeaderboardPage from './pages/LeaderboardPage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
+import RoomLobby from './pages/RoomLobby.jsx';
 
 // Persist session to sessionStorage
 const SESSION_KEY = 'qm_user';
@@ -26,8 +27,9 @@ export default function App() {
       } else {
         const saved = sessionStorage.getItem(SESSION_KEY);
         if (saved) {
-          setUser(JSON.parse(saved));
-          setScreen('home');
+          const u = JSON.parse(saved);
+          setUser(u);
+          setScreen(u.roomCode ? 'lobby' : 'home');
         } else {
           setScreen('login');
         }
@@ -40,8 +42,9 @@ export default function App() {
       try {
         const saved = sessionStorage.getItem(SESSION_KEY);
         if (saved) {
-          setUser(JSON.parse(saved));
-          setScreen('home');
+          const u = JSON.parse(saved);
+          setUser(u);
+          setScreen(u.roomCode ? 'lobby' : 'home');
         }
       } catch (e) { }
     }
@@ -52,7 +55,7 @@ export default function App() {
   const handleLogin = (userData) => {
     setUser(userData);
     try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(userData)); } catch (e) { }
-    setScreen('home');
+    setScreen(userData.roomCode ? 'lobby' : 'home');
   };
 
   const handleLogout = () => {
@@ -119,7 +122,7 @@ export default function App() {
         <ResultsPage
           result={quizResult}
           user={user}
-          onHome={() => setScreen('home')}
+          onHome={(dest) => setScreen(dest || 'home')}
           onRetry={handleRetry}
         />
       )}
@@ -131,6 +134,18 @@ export default function App() {
       )}
       {screen === 'admin' && (
         <AdminPage onBack={() => handleNav('home')} />
+      )}
+      {screen === 'lobby' && user?.roomCode && (
+        <RoomLobby
+          user={user}
+          onStartQuiz={handleStartQuiz}
+          onBack={() => {
+            const u = { ...user, roomCode: null, isHost: false };
+            setUser(u);
+            sessionStorage.setItem(SESSION_KEY, JSON.stringify(u));
+            setScreen('home');
+          }}
+        />
       )}
     </>
   );

@@ -48,6 +48,8 @@ export default function QuizPage({ config, user, onFinish, onBack }) {
         data = await api.getDailyChallenge(config.lang || 'en');
         data.category = 'mixed';
         data.category_name = 'Daily Challenge';
+      } else if (config.mode === 'room' && config.roomCode) {
+        data = await api.getRoomQuiz(config.roomCode);
       } else {
         data = await api.getQuiz(config.category, config.difficulty, config.count || 10, config.lang || 'en');
       }

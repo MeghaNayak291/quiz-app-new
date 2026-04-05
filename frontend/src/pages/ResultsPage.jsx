@@ -7,12 +7,12 @@ export default function ResultsPage({ result, user, onHome, onRetry }) {
   const [tab, setTab] = useState('overview');
 
   let grade, gradeClass, emoji, message;
-  if (pct >= 90)      { grade = 'S'; gradeClass = 'grade-s'; emoji = '🏆'; message = 'Legendary!'; }
+  if (pct >= 90) { grade = 'S'; gradeClass = 'grade-s'; emoji = '🏆'; message = 'Legendary!'; }
   else if (pct >= 80) { grade = 'A'; gradeClass = 'grade-a'; emoji = '🥇'; message = 'Outstanding!'; }
   else if (pct >= 70) { grade = 'B'; gradeClass = 'grade-b'; emoji = '🥈'; message = 'Great Work!'; }
   else if (pct >= 60) { grade = 'C'; gradeClass = 'grade-c'; emoji = '🥉'; message = 'Good Effort!'; }
   else if (pct >= 40) { grade = 'D'; gradeClass = 'grade-d'; emoji = '📚'; message = 'Keep Practicing!'; }
-  else                { grade = 'F'; gradeClass = 'grade-f'; emoji = '💪'; message = 'Don\'t Give Up!'; }
+  else { grade = 'F'; gradeClass = 'grade-f'; emoji = '💪'; message = 'Don\'t Give Up!'; }
 
   const wrong = total - correct;
   const accuracy = pct;
@@ -42,10 +42,10 @@ export default function ResultsPage({ result, user, onHome, onRetry }) {
         {/* Stats row */}
         <div className="results-stats">
           {[
-            { label: 'Correct',  val: correct,   unit: '',  color: 'var(--success)' },
-            { label: 'Wrong',    val: wrong,      unit: '',  color: 'var(--error)' },
-            { label: 'Accuracy', val: accuracy,   unit: '%', color: 'var(--accent2)' },
-            { label: 'Time',     val: `${mins}m ${secs}s`, unit: '', color: 'var(--warning)' },
+            { label: 'Correct', val: correct, unit: '', color: 'var(--success)' },
+            { label: 'Wrong', val: wrong, unit: '', color: 'var(--error)' },
+            { label: 'Accuracy', val: accuracy, unit: '%', color: 'var(--accent2)' },
+            { label: 'Time', val: `${mins}m ${secs}s`, unit: '', color: 'var(--warning)' },
           ].map((s, i) => (
             <div key={i} className="results-stat-box">
               <div className="rs-val" style={{ color: s.color }}>{s.val}{s.unit}</div>
@@ -103,9 +103,9 @@ export default function ResultsPage({ result, user, onHome, onRetry }) {
             {/* Message */}
             <div className={`result-callout ${pct >= 70 ? 'positive' : 'neutral'}`}>
               {pct >= 90 ? '🌟 Incredible performance! You\'re a true expert in this subject.' :
-               pct >= 70 ? '👍 Solid performance! A bit more practice and you\'ll ace it.' :
-               pct >= 50 ? '📖 Not bad! Review the missed questions and try again.' :
-               '💡 Keep learning! Every attempt makes you smarter.'}
+                pct >= 70 ? '👍 Solid performance! A bit more practice and you\'ll ace it.' :
+                  pct >= 50 ? '📖 Not bad! Review the missed questions and try again.' :
+                    '💡 Keep learning! Every attempt makes you smarter.'}
             </div>
           </div>
         )}
@@ -118,7 +118,7 @@ export default function ResultsPage({ result, user, onHome, onRetry }) {
                   {a.correct ? '✅' : a.skipped ? '⏭️' : a.timedOut ? '⏰' : '❌'}
                 </div>
                 <div className="review-body">
-                  <div className="review-q">Q{i+1}: {a.question}</div>
+                  <div className="review-q">Q{i + 1}: {a.question}</div>
                   {!a.correct && a.options && typeof a.correctIdx === 'number' && (
                     <div className="review-correct">
                       ✓ Correct: {a.options[a.correctIdx]}
@@ -135,6 +135,9 @@ export default function ResultsPage({ result, user, onHome, onRetry }) {
         {/* Actions */}
         <div className="results-actions">
           <button className="results-action-btn outline" onClick={onHome}>🏠 Home</button>
+          {user?.roomCode && (
+            <button className="results-action-btn outline" onClick={() => onHome('leaderboard')}>🏠 Team Scores</button>
+          )}
           <button className="results-action-btn primary" onClick={onRetry}>🔄 Retry</button>
         </div>
 

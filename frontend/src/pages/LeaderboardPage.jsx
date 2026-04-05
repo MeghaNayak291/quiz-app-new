@@ -6,7 +6,7 @@ const DIFF_COLORS = { easy: '#10b981', medium: '#f59e0b', hard: '#ef4444' };
 const MEDALS = ['🥇', '🥈', '🥉'];
 
 export default function LeaderboardPage({ user, onBack }) {
-  const [tab, setTab] = useState('global');
+  const [tab, setTab] = useState(user?.roomCode ? 'room' : 'global');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [roomData, setRoomData] = useState(null);
@@ -36,7 +36,7 @@ export default function LeaderboardPage({ user, onBack }) {
     setLoading(false);
   };
 
-  const CATS = ['html','css','javascript','python','dbms','gk','aiml','aptitude','os','networks'];
+  const CATS = ['html', 'css', 'javascript', 'python', 'dbms', 'gk', 'aiml', 'aptitude', 'os', 'networks'];
 
   return (
     <div className="lb-wrap">
@@ -59,7 +59,7 @@ export default function LeaderboardPage({ user, onBack }) {
         <div className="lb-tabs">
           {[
             { id: 'global', label: '🌍 Global' },
-            { id: 'daily',  label: '📅 Daily' },
+            { id: 'daily', label: '📅 Daily' },
             ...(user?.roomCode ? [{ id: 'room', label: '🏠 Room' }] : []),
           ].map(t => (
             <button key={t.id} className={`lb-tab ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
@@ -109,7 +109,7 @@ export default function LeaderboardPage({ user, onBack }) {
             </div>
           ) : data.length === 0 ? (
             <div className="lb-empty">
-              <div style={{fontSize:'3rem'}}>📭</div>
+              <div style={{ fontSize: '3rem' }}>📭</div>
               <p>No scores yet. Be the first!</p>
             </div>
           ) : (
@@ -125,7 +125,7 @@ export default function LeaderboardPage({ user, onBack }) {
                     {entry.nickname === user?.nickname && <span className="you-tag">YOU</span>}
                   </div>
                   <div className="lb-meta">
-                    <span className="mono" style={{color: DIFF_COLORS[entry.difficulty] || 'var(--muted)'}}>
+                    <span className="mono" style={{ color: DIFF_COLORS[entry.difficulty] || 'var(--muted)' }}>
                       {entry.difficulty || ''}
                     </span>
                     {entry.category && <span className="lb-cat">{entry.category.toUpperCase()}</span>}

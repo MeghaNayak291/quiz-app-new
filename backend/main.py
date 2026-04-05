@@ -300,10 +300,44 @@ def create_room(body: RoomCreate):
         "players": [{"nickname": body.nickname, "score": 0, "joined": datetime.datetime.now().isoformat()}],
         "created": datetime.datetime.now().isoformat(),
         "active": True,
+        "game_started": False,
+        "category": None,
+        "difficulty": "medium",
+        "lang": "en",
         "scores": []
     }
     save_json(ROOMS_FILE, rooms)
     return {"room_code": code, "room": rooms[code]}
+
+@app.post("/api/rooms/{code}/start")
+def start_room(code: str, body: dict):
+    # expect body to have category and difficulty
+    rooms = get_rooms()
+    code = code.upper()
+    if code not in rooms:
+        raise HTTPException(404, "Room not found")
+    
+    rooms[code]["game_started"] = True
+    cat = body.get("category", "html")
+    diff = body.get("difficulty", "medium")
+    rooms[code]["category"] = cat
+    rooms[code]["difficulty"] = diff
+    rooms[code]["lang"] = body.get("lang", "en")
+    
+    # Pre-select 10 random questions for everyone in the room
+    qs = get_questions()
+    cat_qs = qs.get(cat, {}).get(diff, [])
+    if not cat_qs:
+        # Fallback to mixing if specific level empty
+        cat_qs = []
+        for d in ["easy", "medium", "hard"]:
+            cat_qs.extend(qs.get(cat, {}).get(d, []))
+            
+    selected = random.sample(cat_qs, min(10, len(cat_qs)))
+    rooms[code]["question_ids"] = [q["id"] for q in selected]
+    
+    save_json(ROOMS_FILE, rooms)
+    return {"message": "Game started!", "room": rooms[code]}
 
 @app.post("/api/rooms/join")
 def join_room(body: RoomJoin):
@@ -362,6 +396,64 @@ def submit_room_score(code: str, body: ScoreSubmit):
     save_json(ROOMS_FILE, rooms)
     sorted_scores = sorted(rooms[code]["scores"], key=lambda x: x.get("percentage", 0), reverse=True)
     return {"leaderboard": sorted_scores, "room": rooms[code]}
+
+@app.get("/api/rooms/{code}/quiz")
+def get_room_quiz(code: str):
+    rooms = get_rooms()
+    code = code.upper()
+    if code not in rooms:
+        raise HTTPException(404, "Room not found")
+    
+    r = rooms[code]
+    if not r.get("game_started"):
+        raise HTTPException(400, "Game not started yet")
+        
+    qs = get_questions()
+    cat = r["category"]
+    diff = r["difficulty"]
+    lang = r.get("lang", "en")
+    ids = r.get("question_ids", [])
+    
+    # Gather selected questions (searching categories if needed)
+    selected = []
+    # Try the specific diff first
+    pool = qs.get(cat, {}).get(diff, [])
+    # Search all difficulties if not found (in case difficulty was fallback)
+    all_pool = []
+    for d in ["easy", "medium", "hard"]:
+        all_pool.extend(qs.get(cat, {}).get(d, []))
+        
+    for q_id in ids:
+        q = next((x for x in all_pool if x["id"] == q_id), None)
+        if q:
+            selected.append(q)
+            
+    # Translation logic
+    translation_cache = load_json(TRANSLATIONS_FILE, {})
+    cache_updated = False
+    sanitized = []
+    
+    for q in selected:
+        sq = {k: v for k, v in q.items() if k != "answer"}
+        if lang and lang != 'en':
+            sq["question"] = translate_text(q["question"], lang, translation_cache)
+            sq["options"] = [translate_text(opt, lang, translation_cache) for opt in q["options"]]
+            if "hint" in q:
+                sq["hint"] = translate_text(q["hint"], lang, translation_cache)
+            cache_updated = True
+        sanitized.append(sq)
+        
+    if cache_updated:
+        save_json(TRANSLATIONS_FILE, translation_cache)
+        
+    return {
+        "room_code": code,
+        "questions": sanitized,
+        "total": len(sanitized),
+        "category": cat,
+        "difficulty": diff,
+        "lang": lang
+    }
 
 @app.get("/api/rooms/{code}/leaderboard")
 def get_room_leaderboard(code: str):

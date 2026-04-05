@@ -41,6 +41,8 @@ export const api = {
   createRoom: (nickname, roomCode) => req('/api/rooms/create', { method: 'POST', body: { nickname, room_code: roomCode } }),
   joinRoom: (nickname, roomCode) => req('/api/rooms/join', { method: 'POST', body: { nickname, room_code: roomCode } }),
   getRoom: (code) => req(`/api/rooms/${code}`),
+  startRoom: (code, category, difficulty, lang) => req(`/api/rooms/${code}/start`, { method: 'POST', body: { category, difficulty, lang } }),
+  getRoomQuiz: (code) => req(`/api/rooms/${code}/quiz`),
   submitRoomScore: (code, data) => req(`/api/rooms/${code}/score`, { method: 'POST', body: data }),
   getRoomLeaderboard: (code) => req(`/api/rooms/${code}/leaderboard`),
 
